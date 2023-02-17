@@ -1,0 +1,50 @@
+{% extends "coderedcms/pages/web_page.html" %}
+{% load wagtailcore_tags wagtailimages_tags coderedcms_tags %}
+
+{% block content_pre_body %}
+{% if self.cover_image %}
+{% image page.cover_image fill-1600x900 format-webp as cover_image %}
+<div class="hero-bg mb-5" style="background-image:url({{cover_image.url}});">
+  <div class="hero-fg">
+    <div class="d-flex justify-content-center">
+      <h1 class="text-shadow text-white">{{page.title}}</h1>
+    </div>
+  </div>
+</div>
+{% else %}
+<div class="container">
+  <h1>{{page.title}}</h1>
+</div>
+{% endif %}
+{% endblock %}
+
+
+{% block index_content %}
+<div class="container mb-5">
+    <div class="row row-cols-2 row-cols-md-3 row-cols-xl-4">
+        {% for product in page.get_children.specific %}
+        <div class="col  text-center">
+            <div class="card h-100">
+                {% if product.photo %}
+                {% image product.photo fill-300x300 as product_photo %}
+                <a href="{{product.url}}">
+                    <img class="card-img-top w-100" src="{{product_photo.url}}" alt="{{product.title}}">
+                </a>
+                {% endif %}
+                <div class="card-body">
+                  <div class="card-text">
+                    <h5><a href="{{product.url}}">{{product.title}}</a></h5>
+                    {{product.description|richtext}}
+                    {% if page.need_prescription %}
+                    <p> Call your doctor to see if {{page.title}} is right for you!</p>
+                    {% else %}
+                    <p> No Prescription Needed!</p>
+                    {% endif %}
+                  </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
