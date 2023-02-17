@@ -1,6 +1,9 @@
-# My Company Inc. website
+# Tutorial code for Wagtail-CRX
 
 Code for site at: https://crxpharma.codered.cloud/
+
+This is the demo project used in the Wagtail-CRX docs.  Follow along here:
+https://docs.coderedcorp.com/wagtail-crx/getting_started/install.html
 
 
 ## Getting started
@@ -29,7 +32,7 @@ Open this directory in a command prompt, then:
    ```
 
 4. Go to http://localhost:8000/ in your browser, or http://localhost:8000/admin/
-   to log in and get to work!
+   to log in and get to work!  There is a superuser already created. user: admin  password: admin
 
 
 ## Documentation links
